@@ -1,6 +1,8 @@
-FROM debian:latest
+FROM python:latest
 
-RUN apt update
-RUN apt install -y fish
+RUN mkdir -p /opt/services/djangoapp/src
+COPY ./requirements.txt /opt/services/djangoapp/src
 
-CMD ["fish"]
+RUN pip install requirements.txt
+COPY ./ /opt/services/djangoapp/src
+
