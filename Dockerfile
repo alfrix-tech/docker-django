@@ -3,6 +3,13 @@ FROM python:latest
 RUN mkdir -p /opt/services/djangoapp/src
 COPY ./requirements.txt /opt/services/djangoapp/src
 
-RUN pip install requirements.txt
+WORKDIR /opt/services/djangoapp/src
+
+RUN pip install --no-cache-dir -r requirements.txt
 COPY ./ /opt/services/djangoapp/src
 
+EXPOSE 9000
+
+ENTRYPOINT ["python", "testapp/manage.py"]
+
+CMD ["runserver", "0:9000"] 
