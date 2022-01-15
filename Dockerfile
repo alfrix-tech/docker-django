@@ -12,4 +12,4 @@ EXPOSE 9000
 
 ENTRYPOINT ["python", "testapp/manage.py"]
 
-CMD ["runserver", "0:9000"] 
+CMD ["runserver", "localhost:9000"] 
